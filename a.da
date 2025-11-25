@@ -1,0 +1,770 @@
+				1
+(b).Visualize the datasets using matplotlib in python/R.(Histogram, Box plot, Bar Chart, Pie Chart,etc,.)
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Sample data
+data = np.array([
+    [2.0, 3.0],
+    [3.5, 5.0],
+    [1.0, 2.0],
+    [4.0, 4.5]
+])
+
+attr1 = data[:, 0]
+attr2 = data[:, 1]
+labels = ['Instance 1', 'Instance 2', 'Instance 3', 'Instance 4']
+
+# Histogram
+plt.figure(figsize=(10, 6))
+plt.hist(attr1, bins=5, alpha=0.7, label='Attribute 1')
+plt.hist(attr2, bins=5, alpha=0.7, label='Attribute 2')
+plt.title('Histogram of Attributes')
+plt.xlabel('Value')
+plt.ylabel('Frequency')
+plt.legend()
+plt.show()
+
+# Box Plot
+plt.figure(figsize=(8, 6))
+plt.boxplot([attr1, attr2], labels=['Attribute 1', 'Attribute 2'])
+plt.title('Box Plot of Attributes')
+plt.ylabel('Value')
+plt.show()
+
+# Bar Chart
+plt.figure(figsize=(10, 6))
+x = np.arange(len(labels))
+width = 0.35
+plt.bar(x - width/2, attr1, width, label='Attribute 1')
+plt.bar(x + width/2, attr2, width, label='Attribute 2')
+plt.xticks(x, labels)
+plt.title('Bar Chart of Attributes')
+plt.ylabel('Value')
+plt.legend()
+plt.show()
+
+# Pie Chart (using Attribute 1 values)
+plt.figure(figsize=(8, 8))
+plt.pie(attr1, labels=labels, autopct='%1.1f%%', startangle=140)
+plt.title('Pie Chart of Attribute 1')
+plt.show()
+
+Commands:
+import os
+os.system('python -m pip install matplotlib numpy')
+run
+
+Output:
+Graph
+_____________________________________________________________________
+				2
+(b).Visualize the datasets using matplotlib in python/R.(Histogram, Box plot, Bar Chart, Pie Chart,etc,.)
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Sample data
+data = np.array([
+    [2.0, 3.0],
+    [3.5, 5.0],
+    [1.0, 2.0],
+    [4.0, 4.5]
+])
+
+attr1 = data[:, 0]
+attr2 = data[:, 1]
+labels = ['Instance 1', 'Instance 2', 'Instance 3', 'Instance 4']
+
+# Histogram
+plt.figure(figsize=(10, 6))
+plt.hist(attr1, bins=5, alpha=0.7, label='Attribute 1')
+plt.hist(attr2, bins=5, alpha=0.7, label='Attribute 2')
+plt.title('Histogram of Attributes')
+plt.xlabel('Value')
+plt.ylabel('Frequency')
+plt.legend()
+plt.show()
+
+# Box Plot
+plt.figure(figsize=(8, 6))
+plt.boxplot([attr1, attr2], labels=['Attribute 1', 'Attribute 2'])
+plt.title('Box Plot of Attributes')
+plt.ylabel('Value')
+plt.show()
+
+# Bar Chart
+plt.figure(figsize=(10, 6))
+x = np.arange(len(labels))
+width = 0.35
+plt.bar(x - width/2, attr1, width, label='Attribute 1')
+plt.bar(x + width/2, attr2, width, label='Attribute 2')
+plt.xticks(x, labels)
+plt.title('Bar Chart of Attributes')
+plt.ylabel('Value')
+plt.legend()
+plt.show()
+
+# Pie Chart (using Attribute 1 values)
+plt.figure(figsize=(8, 8))
+plt.pie(attr1, labels=labels, autopct='%1.1f%%', startangle=140)
+plt.title('Pie Chart of Attribute 1')
+plt.show()
+
+Commands:
+import os
+os.system('python -m pip install matplotlib numpy')
+run
+
+Output:
+Graph
+_____________________________________________________________________
+				3
+(b).Program of cluster analysis using simple k-means algorithm in any programing language.
+# K-MEANS ANALYSIS
+import pandas as pd
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_iris
+
+# Load the Iris dataset
+iris = load_iris()
+data = pd.DataFrame(iris.data, columns=iris.feature_names)
+
+# Apply K-Means clustering
+kmeans = KMeans(n_clusters=3, random_state=42)
+data['Cluster'] = kmeans.fit_predict(data)
+
+# Plot the clusters
+plt.figure(figsize=(6, 6))
+plt.scatter(
+    data['sepal length (cm)'],
+    data['sepal width (cm)'],
+    c=data['Cluster'],
+    cmap='viridis',
+    s=50
+)
+
+plt.title('K-Means Clustering of Iris Data')
+plt.xlabel('Sepal Length')
+plt.ylabel('Sepal Width')
+plt.grid(True)
+plt.show()
+
+Commands:
+import os
+os.system('python -m pip install pandas scikit-learn matplotlib')
+run
+
+Output:
+Graph
+_____________________________________________________________________
+				4
+(b).program for Naive Bayes classification using any programing language.
+# Naïve Bayes classifier on the Iris dataset
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score, classification_report
+
+# Load the Iris dataset
+iris = load_iris()
+X = iris.data
+y = iris.target
+
+# Split data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Create and train the model
+model = GaussianNB()
+model.fit(X_train, y_train)
+
+# Make predictions
+y_pred = model.predict(X_test)
+
+# Evaluate the model
+print("Accuracy:", accuracy_score(y_test, y_pred))
+print("\nClassification Report:\n", classification_report(y_test, y_pred))
+
+commands:
+import os
+os.system('python -m pip install scikit-learn')
+run
+
+Output:
+Accuracy: 0.9777777777777777
+
+Classification Report:
+               precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00        19
+           1       1.00      0.92      0.96        13
+           2       0.93      1.00      0.96        13
+
+    accuracy                           0.98        45
+   macro avg       0.98      0.97      0.97        45
+weighted avg       0.98      0.98      0.98        45
+_____________________________________________________________________
+				5
+(b).program for Naive Bayes classification using any programing language.
+# Naïve Bayes classifier on the Iris dataset
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score, classification_report
+
+# Load the Iris dataset
+iris = load_iris()
+X = iris.data
+y = iris.target
+
+# Split data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Create and train the model
+model = GaussianNB()
+model.fit(X_train, y_train)
+
+# Make predictions
+y_pred = model.predict(X_test)
+
+# Evaluate the model
+print("Accuracy:", accuracy_score(y_test, y_pred))
+print("\nClassification Report:\n", classification_report(y_test, y_pred))
+
+commands:
+import os
+os.system('python -m pip install scikit-learn')
+run
+
+Output:
+Accuracy: 0.9777777777777777
+
+Classification Report:
+               precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00        19
+           1       1.00      0.92      0.96        13
+           2       0.93      1.00      0.96        13
+
+    accuracy                           0.98        45
+   macro avg       0.98      0.97      0.97        45
+weighted avg       0.98      0.98      0.98        45
+_____________________________________________________________________
+				6
+(b).Program of cluster analysis using simple k-means algorithm in any programing language.
+# K-MEANS ANALYSIS
+import pandas as pd
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_iris
+
+# Load the Iris dataset
+iris = load_iris()
+data = pd.DataFrame(iris.data, columns=iris.feature_names)
+
+# Apply K-Means clustering
+kmeans = KMeans(n_clusters=3, random_state=42)
+data['Cluster'] = kmeans.fit_predict(data)
+
+# Plot the clusters
+plt.figure(figsize=(6, 6))
+plt.scatter(
+    data['sepal length (cm)'],
+    data['sepal width (cm)'],
+    c=data['Cluster'],
+    cmap='viridis',
+    s=50
+)
+
+plt.title('K-Means Clustering of Iris Data')
+plt.xlabel('Sepal Length')
+plt.ylabel('Sepal Width')
+plt.grid(True)
+plt.show()
+
+Commands:
+import os
+os.system('python -m pip install pandas scikit-learn matplotlib')
+run
+
+Output:
+Graph
+_____________________________________________________________________
+				7
+(b).Program of cluster analysis using simple k-means algorithm in any programing language.
+# K-MEANS ANALYSIS
+import pandas as pd
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_iris
+
+# Load the Iris dataset
+iris = load_iris()
+data = pd.DataFrame(iris.data, columns=iris.feature_names)
+
+# Apply K-Means clustering
+kmeans = KMeans(n_clusters=3, random_state=42)
+data['Cluster'] = kmeans.fit_predict(data)
+
+# Plot the clusters
+plt.figure(figsize=(6, 6))
+plt.scatter(
+    data['sepal length (cm)'],
+    data['sepal width (cm)'],
+    c=data['Cluster'],
+    cmap='viridis',
+    s=50
+)
+
+plt.title('K-Means Clustering of Iris Data')
+plt.xlabel('Sepal Length')
+plt.ylabel('Sepal Width')
+plt.grid(True)
+plt.show()
+
+Commands:
+import os
+os.system('python -m pip install pandas scikit-learn matplotlib')
+run
+
+Output:
+Graph
+_____________________________________________________________________
+				8
+(b).program for Naive Bayes classification using any programing language.
+# Naïve Bayes classifier on the Iris dataset
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score, classification_report
+
+# Load the Iris dataset
+iris = load_iris()
+X = iris.data
+y = iris.target
+
+# Split data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Create and train the model
+model = GaussianNB()
+model.fit(X_train, y_train)
+
+# Make predictions
+y_pred = model.predict(X_test)
+
+# Evaluate the model
+print("Accuracy:", accuracy_score(y_test, y_pred))
+print("\nClassification Report:\n", classification_report(y_test, y_pred))
+
+commands:
+import os
+os.system('python -m pip install scikit-learn')
+run
+
+Output:
+Accuracy: 0.9777777777777777
+
+Classification Report:
+               precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00        19
+           1       1.00      0.92      0.96        13
+           2       0.93      1.00      0.96        13
+
+    accuracy                           0.98        45
+   macro avg       0.98      0.97      0.97        45
+weighted avg       0.98      0.98      0.98        45
+_____________________________________________________________________
+				9
+(b).program for Naive Bayes classification using any programing language.
+# Naïve Bayes classifier on the Iris dataset
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score, classification_report
+
+# Load the Iris dataset
+iris = load_iris()
+X = iris.data
+y = iris.target
+
+# Split data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Create and train the model
+model = GaussianNB()
+model.fit(X_train, y_train)
+
+# Make predictions
+y_pred = model.predict(X_test)
+
+# Evaluate the model
+print("Accuracy:", accuracy_score(y_test, y_pred))
+print("\nClassification Report:\n", classification_report(y_test, y_pred))
+
+commands:
+import os
+os.system('python -m pip install scikit-learn')
+run
+
+Output:
+Accuracy: 0.9777777777777777
+
+Classification Report:
+               precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00        19
+           1       1.00      0.92      0.96        13
+           2       0.93      1.00      0.96        13
+
+    accuracy                           0.98        45
+   macro avg       0.98      0.97      0.97        45
+weighted avg       0.98      0.98      0.98        45
+_____________________________________________________________________
+				10
+(b).calculate chi-Square value using Python/R.
+
+import numpy as np
+def calculate_chi_square(observed, expected):
+    observed = np.array(observed)
+    expected = np.array(expected)
+    chi_square = np.sum((observed - expected) ** 2 / expected)
+    return chi_square
+# Observed and expected frequencies
+observed_values = [10, 15, 20, 25]
+expected_values = [12, 15, 18, 25]
+# Calculate chi-square value
+chi_square_value = calculate_chi_square(observed_values, expected_values)
+# Display result
+print(f'The chi-square value is: {chi_square_value}')
+
+Commands:
+import os
+os.system('python -m pip install numpy')
+run
+
+Output:
+The chi-square value is: 0.5555555555555556
+_____________________________________________________________________
+				11
+(b).Python program to generate frequent itemset/association rules using Apriori algorithm
+
+import pandas as pd
+from mlxtend.preprocessing import TransactionEncoder
+from mlxtend.frequent_patterns import apriori, association_rules
+
+# Sample transaction data
+transactions = [
+    ['milk', 'bread', 'eggs'],
+    ['milk', 'bread'],
+    ['milk', 'eggs'],
+    ['bread', 'eggs'],
+    ['milk', 'bread', 'eggs', 'butter'],
+    ['bread', 'butter']
+]
+
+# Convert transactions into a one-hot encoded DataFrame
+te = TransactionEncoder()
+te_ary = te.fit(transactions).transform(transactions)
+df = pd.DataFrame(te_ary, columns=te.columns_)
+
+# Generate frequent itemsets using Apriori algorithm
+frequent_itemsets = apriori(df, min_support=0.5, use_colnames=True)
+
+# Generate association rules based on confidence
+rules = association_rules(frequent_itemsets, metric="confidence", min_threshold=0.7)
+
+# Display results
+print("Frequent Itemsets:")
+print(frequent_itemsets)
+
+print("\nAssociation Rules:")
+print(rules[['antecedents', 'consequents', 'support', 'confidence', 'lift']])
+
+commands:
+import os
+os.system('python -m pip install pandas mlxtend')
+run
+
+Output:
+Frequent Itemsets:
+    support       itemsets
+0  0.833333        (bread)
+1  0.666667         (eggs)
+2  0.666667         (milk)
+3  0.500000  (bread, eggs)
+4  0.500000  (milk, bread)
+5  0.500000   (milk, eggs)
+
+Association Rules:
+  antecedents consequents  support  confidence   lift
+0      (eggs)     (bread)      0.5        0.75  0.900
+1      (milk)     (bread)      0.5        0.75  0.900
+2      (milk)      (eggs)      0.5        0.75  1.125
+3      (eggs)      (milk)      0.5        0.75  1.125
+_____________________________________________________________________
+				12
+(b).calculate chi-Square value using Python/R.
+
+import numpy as np
+def calculate_chi_square(observed, expected):
+    observed = np.array(observed)
+    expected = np.array(expected)
+    chi_square = np.sum((observed - expected) ** 2 / expected)
+    return chi_square
+# Observed and expected frequencies
+observed_values = [10, 15, 20, 25]
+expected_values = [12, 15, 18, 25]
+# Calculate chi-square value
+chi_square_value = calculate_chi_square(observed_values, expected_values)
+# Display result
+print(f'The chi-square value is: {chi_square_value}')
+
+Commands:
+import os
+os.system('python -m pip install numpy')
+run
+
+Output:
+The chi-square value is: 0.5555555555555556
+_____________________________________________________________________
+				13
+(b).Python program to generate frequent itemsets/Association rules using Apriori algorithm.
+
+import pandas as pd
+from mlxtend.preprocessing import TransactionEncoder
+from mlxtend.frequent_patterns import apriori, association_rules
+
+# Sample transaction data
+transactions = [
+    ['milk', 'bread', 'eggs'],
+    ['milk', 'bread'],
+    ['milk', 'eggs'],
+    ['bread', 'eggs'],
+    ['milk', 'bread', 'eggs', 'butter'],
+    ['bread', 'butter']
+]
+
+# Convert transactions into a one-hot encoded DataFrame
+te = TransactionEncoder()
+te_ary = te.fit(transactions).transform(transactions)
+df = pd.DataFrame(te_ary, columns=te.columns_)
+
+# Generate frequent itemsets using Apriori algorithm
+frequent_itemsets = apriori(df, min_support=0.5, use_colnames=True)
+
+# Generate association rules based on confidence
+rules = association_rules(frequent_itemsets, metric="confidence", min_threshold=0.7)
+
+# Display results
+print("Frequent Itemsets:")
+print(frequent_itemsets)
+
+print("\nAssociation Rules:")
+print(rules[['antecedents', 'consequents', 'support', 'confidence', 'lift']])
+
+commands:
+import os
+os.system('python -m pip install pandas mlxtend')
+run
+
+Output:
+Frequent Itemsets:
+    support       itemsets
+0  0.833333        (bread)
+1  0.666667         (eggs)
+2  0.666667         (milk)
+3  0.500000  (bread, eggs)
+4  0.500000  (milk, bread)
+5  0.500000   (milk, eggs)
+
+Association Rules:
+  antecedents consequents  support  confidence   lift
+0      (eggs)     (bread)      0.5        0.75  0.900
+1      (milk)     (bread)      0.5        0.75  0.900
+2      (milk)      (eggs)      0.5        0.75  1.125
+3      (eggs)      (milk)      0.5        0.75  1.125
+_____________________________________________________________________
+				14
+(b).Java program to prepare a simulated data set unique instances
+
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
+
+class DataInstance {
+    private int id;
+    private String name;
+
+    public DataInstance(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String toString() {
+        return "DataInstance [id=" + id + ", name=" + name + "]";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        DataInstance other = (DataInstance) obj;
+        return id == other.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
+    }
+}
+
+// Main class to generate and display unique data set
+public class UniqueDatasetGenerator {
+    public static void main(String[] args) {
+        int dataSize = 10; // number of data instances to generate
+        Set<DataInstance> uniqueDataSet = generateUniqueData(dataSize);
+
+        System.out.println("Generated Unique Data Set:");
+        for (DataInstance instance : uniqueDataSet) {
+            System.out.println(instance);
+        }
+    }
+
+    public static Set<DataInstance> generateUniqueData(int size) {
+        Set<DataInstance> dataSet = new HashSet<>();
+        Random random = new Random();
+        String[] possibleNames = {
+            "Alice", "Bob", "Charlie", "David", "Eve",
+            "Frank", "Grace", "Heidi"
+        };
+
+        for (int i = 0; i < size; i++) {
+            int id = i + 1; // unique ID
+            String name = possibleNames[random.nextInt(possibleNames.length)];
+            DataInstance newInstance = new DataInstance(id, name);
+            dataSet.add(newInstance);
+        }
+
+        return dataSet;
+    }
+}
+
+Commands:
+javac UniqueDatasetGenerator.java
+java UniqueDatasetGenerator
+
+Output:
+Generated Unique Data Set:
+DataInstance [id=1, name=Charlie]
+DataInstance [id=2, name=Bob]
+DataInstance [id=3, name=Grace]
+DataInstance [id=4, name=Grace]
+DataInstance [id=5, name=Alice]
+DataInstance [id=6, name=Heidi]
+DataInstance [id=7, name=Eve]
+DataInstance [id=8, name=David]
+DataInstance [id=9, name=Charlie]
+DataInstance [id=10, name=David]
+_____________________________________________________________________
+				15
+(b).Java program to prepare a simulated data set unique instances
+
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
+
+class DataInstance {
+    private int id;
+    private String name;
+
+    public DataInstance(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String toString() {
+        return "DataInstance [id=" + id + ", name=" + name + "]";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        DataInstance other = (DataInstance) obj;
+        return id == other.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
+    }
+}
+
+public class UniqueDatasetGenerator {
+    public static void main(String[] args) {
+        int dataSize = 10; // number of data instances to generate
+        Set<DataInstance> uniqueDataSet = generateUniqueData(dataSize);
+
+        System.out.println("Generated Unique Data Set:");
+        for (DataInstance instance : uniqueDataSet) {
+            System.out.println(instance);
+        }
+    }
+
+    public static Set<DataInstance> generateUniqueData(int size) {
+        Set<DataInstance> dataSet = new HashSet<>();
+        Random random = new Random();
+        String[] possibleNames = {
+            "Alice", "Bob", "Charlie", "David", "Eve",
+            "Frank", "Grace", "Heidi"
+        };
+
+        for (int i = 0; i < size; i++) {
+            int id = i + 1; // unique ID
+            String name = possibleNames[random.nextInt(possibleNames.length)];
+            DataInstance newInstance = new DataInstance(id, name);
+            dataSet.add(newInstance);
+        }
+
+        return dataSet;
+    }
+}
+
+Commands:
+javac UniqueDatasetGenerator.java
+java UniqueDatasetGenerator
+
+Output:
+Generated Unique Data Set:
+DataInstance [id=1, name=Charlie]
+DataInstance [id=2, name=Bob]
+DataInstance [id=3, name=Grace]
+DataInstance [id=4, name=Grace]
+DataInstance [id=5, name=Alice]
+DataInstance [id=6, name=Heidi]
+DataInstance [id=7, name=Eve]
+DataInstance [id=8, name=David]
+DataInstance [id=9, name=Charlie]
+DataInstance [id=10, name=David]
